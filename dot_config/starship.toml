@@ -1,0 +1,30 @@
+format = '''
+$username$hostname$directory$git_branch
+$character
+'''
+
+[username]
+format = '[$user]($style)'
+show_always = true
+style_user = 'bold'
+
+[hostname]
+format = ' at [$hostname]($style)'
+ssh_only = false
+ssh_symbol = ''
+style = 'bold green'
+
+[directory]
+format = ' in [$path]($style)'
+style = 'bold blue'
+truncate_to_repo = true
+truncation_length = 3
+truncation_symbol = '.../'
+
+[git_branch]
+format = ' on [Git $branch(:$remote_branch)]($style)'
+style = 'bold cyan'
+
+[character]
+error_symbol = '[>](bold red)'
+success_symbol = '>'

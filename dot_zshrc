@@ -31,7 +31,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
@@ -43,6 +43,17 @@ export EDITOR='vim'
 # plugins, and themes.
 # For a full list of active aliases already set by oh-my-zsh, run `alias`.
 alias ll="ls -ahl"
+
+# Start the ssh-agent and add the keys to it so ssh-ing to remote hosts and Git
+# auth does not require specifying the key location. Test that this is
+# successful by running `echo $SSH_AUTH_SOCK`; the output should not be empty.
+if [ $(echo $SSH_AUTH_SOCK | wc --chars) -le 1 ]; then
+    eval $(ssh-agent -s) > /dev/null
+    if [ "$(ssh-add -l)" = "The agent has no identities." ]; then
+        # Below, we need 2>&1 to make this actually silent. /dev/null is not enough
+        ssh-add ~/.ssh/id_ed25519_github > /dev/null 2>&1
+    fi
+fi
 
 # Starship prompt
 eval "$(starship init zsh)"

@@ -17,12 +17,12 @@ style = 'bold green'
 [directory]
 format = ' in [$path]($style)'
 style = 'bold blue'
-truncate_to_repo = true
+truncate_to_repo = false
 truncation_length = 3
 truncation_symbol = '.../'
 
 [git_branch]
-format = ' on [Git $branch(:$remote_branch)]($style)'
+format = ' on [$branch(:$remote_branch)]($style)'
 style = 'bold cyan'
 
 [character]

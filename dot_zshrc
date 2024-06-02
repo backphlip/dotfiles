@@ -57,7 +57,7 @@ if [ $(echo $SSH_AUTH_SOCK | wc --chars) -le 1 ]; then
     eval $(ssh-agent -s) > /dev/null
     if [ "$(ssh-add -l)" = "The agent has no identities." ]; then
         # Below, we need 2>&1 to make this actually silent. /dev/null is not enough
-        ssh-add ~/.ssh/id_ed25519_github > /dev/null 2>&1
+        ssh-add $HOME/.ssh/id_ed25519_github > /dev/null 2>&1
     fi
 fi
 
